@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+
+    background: #EEAECA;
+    background: linear-gradient(270deg,rgba(238, 174, 202, 1) 0%, rgba(217, 255, 253, 1) 100%);
+}
+
+#snakeGame {
+    position: relative;
+
+    width: 750px;
+    height: 750px;
+    background: rgba(0, 0, 0, 0.1);
+    
+    margin: 0 auto;
+    margin-top: 70px;
+}
+
+#scoreBoard {
+    display: flex;
+    justify-content: space-around;
+    padding: 25px;
+}
+
+#scoreBoard h1 {
+    font-size: 20px;
+}
+
+#gameField {
+    display: grid;
+    grid-template-columns: repeat(10, 60px);
+    grid-template-rows: repeat(10, 60px);
+
+    position: relative;
+
+    width: 600px;
+    height: 600px;
+
+    margin: 0 auto;
+
+    background-color: rgba(0, 0, 0, 0.062);
+}
+
+#restartButton {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+
+    margin: 15px auto 0;
+
+    padding: 15px 50px;
+    
+    border: 1px solid #000;
+
+    background: #EEAECA;
+    color: #000000;
+    transition: all .1s ease;
+
+    cursor: pointer;
+    display: none;
+
+    position: relative;
+    z-index: 1;
+}
+
+#restartButton:hover {
+    background: #eeaeca8a;
+}
+
+#gameInfo {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 750px;
+    height: 750px;
+
+    background: #000000c7;
+    z-index: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#someText {
+    color: rgb(216, 216, 216)
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(252, 252, 252, 0.274);
+    border: 0.5px solid #00000065;
+}
+
+.snake {
+    background-color: green;
+}
+
+.apple {
+    background-color: red;
+    border-radius: 50%;
+}
