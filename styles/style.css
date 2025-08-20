@@ -103,15 +103,15 @@ body {
 }
 
 .snake-head {
-    background-color: darkgreen; /* Цвет головы */
+    background-color: darkgreen;
 }
 
 .snake-body {
-    background-color: green; /* Цвет тела */
+    background-color: green;
 }
 
 .snake-tail {
-    background-color: lightgreen; /* Цвет хвоста */
+    background-color: lightgreen;
 }
 
 .apple {
