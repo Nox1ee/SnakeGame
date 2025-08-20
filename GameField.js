@@ -18,15 +18,32 @@ class GameField {
     }
 
     render(snakeBody, applePosition) {
-        this.cells.forEach(cell => {cell.classList.remove('snake', 'apple');
+        this.cells.forEach(cell => {
+            cell.classList.remove('snake-head', 'snake-body', 'snake-tail', 'apple');
             const x = parseInt(cell.dataset.x);
             const y = parseInt(cell.dataset.y);
 
-            if (snakeBody.some(segment => segment.x === x && segment.y === y)) {
-                cell.classList.add('snake');
+            if (snakeBody.length > 0) {
+                const head = snakeBody[0];
+                if (head.x === x && head.y === y) {
+                    cell.classList.add('snake-head');
+                    return;
+                }
+
+                for (let i = 1; i < snakeBody.length; i++) {
+                    const segment = snakeBody[i];
+                    if (segment.x === x && segment.y === y) {
+                        if (i === snakeBody.length - 1) {
+                            cell.classList.add('snake-tail');
+                        } else {
+                            cell.classList.add('snake-body');
+                        }
+                        return;
+                    }
+                }
             }
 
-            if (x === applePosition.x && y === applePosition.y) {
+            if (applePosition.x === x && applePosition.y === y) {
                 cell.classList.add('apple');
             }
         });
