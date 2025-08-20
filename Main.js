@@ -38,18 +38,17 @@ class Main {
             this.snake.changeDirection(event.key);
         });
 
-        this.gameInterval = setInterval(() => this.gameLoop(), 300);
+        this.gameInterval = setInterval(() => this.gameLoop(), 500);
     }
 
     gameLoop() {
         const head = this.snake.move(this.boardSize);
 
         if (head.x === this.apple.position.x && head.y === this.apple.position.y) {
-            this.score.increase(); // Увеличивает счет
-            this.snake.grow(); // Увеличивает длину змейки
-            this.apple.spawn(this.snake.body); // Генерирует новое яблоко
+            this.score.increase();
+            this.apple.spawn(this.snake.body);
         } else {
-            this.snake.body.pop(); // Удаляет хвост
+            this.snake.body.pop();
         }
 
         if (this.snake.isSelfCollision()) {
