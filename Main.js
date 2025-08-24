@@ -51,7 +51,6 @@ class Main {
             this.score.increase(); // Увеличение счета
             this.apple.spawn(this.snake.body); // Увеличение длины змейки
             this.interval = Math.max(50, this.interval - 10); // Уменьшение интервала(увеличение скорости змейки)
-            console.log(this.interval)
             clearInterval(this.gameInterval);
             this.gameInterval = setInterval(() => this.gameLoop(), this.interval); // Обновление игры с новым интервалом
         } else {
@@ -77,3 +76,4 @@ class Main {
 window.onload = () => new Main();
 
 export default Main;
+
