@@ -12,6 +12,9 @@ class Main {
         this.apple = new Apple(this.boardSize);
         this.score = new Score();
 
+        this.gameInterval = null;
+        this.interval = 500;
+        
         // При нажатие на экран, начинается игра
         document.getElementById("gameInfo").addEventListener("click", () => this.startGame());
 
@@ -22,7 +25,7 @@ class Main {
 
         this.verifyHighScore();
     }
-
+ 
     verifyHighScore() {
         if (this.score._highScore === 0) {
             document.getElementById("highScore").style.display = "none";
@@ -38,21 +41,25 @@ class Main {
             this.snake.changeDirection(event.key);
         });
 
-        this.gameInterval = setInterval(() => this.gameLoop(), 500);
+        this.gameInterval = setInterval(() => this.gameLoop(), this.interval);
     }
 
     gameLoop() {
         const head = this.snake.move(this.boardSize);
 
-        if (head.x === this.apple.position.x && head.y === this.apple.position.y) {
-            this.score.increase();
-            this.apple.spawn(this.snake.body);
+        if (head.x === this.apple.position.x && head.y === this.apple.position.y) { // При поедании яблока
+            this.score.increase(); // Увеличение счета
+            this.apple.spawn(this.snake.body); // Увеличение длины змейки
+            this.interval = Math.max(50, this.interval - 10); // Уменьшение интервала(увеличение скорости змейки)
+            console.log(this.interval)
+            clearInterval(this.gameInterval);
+            this.gameInterval = setInterval(() => this.gameLoop(), this.interval); // Обновление игры с новым интервалом
         } else {
-            this.snake.body.pop();
+            this.snake.body.pop(); // Удаление хвоста
         }
 
         if (this.snake.isSelfCollision()) {
-            this.endGame();
+            this.endGame(); // Конец игры, при столкновение
             return;
         }
 
@@ -60,10 +67,10 @@ class Main {
     }
 
     endGame() {
-        clearInterval(this.gameInterval); 
-        this.score.checkHighScore();
-        document.getElementById('restartButton').style.display = 'block';
-        document.getElementById("gameInfo").style.display = "flex"
+        clearInterval(this.gameInterval); // Удаление интвервала, остановка игры
+        this.score.checkHighScore(); // проверка на новый рекорд
+        document.getElementById('restartButton').style.display = 'block'; // Отображение кнопки рестарта
+        document.getElementById("gameInfo").style.display = "flex"; 
     }
 }
 
