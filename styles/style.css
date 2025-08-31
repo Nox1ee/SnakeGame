@@ -12,6 +12,8 @@ body {
 
     background: #EEAECA;
     background: linear-gradient(270deg,rgba(238, 174, 202, 1) 0%, rgba(217, 255, 253, 1) 100%);
+
+    overflow: hidden;
 }
 
 #snakeGame {
@@ -141,6 +143,43 @@ body {
     background-size: contain;
 }
 
+.buttons {
+    position: relative;
+    display: none;
+
+    margin-top: 50px;
+}
+
+
+.buttons__item img {
+    width: 100px;
+}
+
+.buttons__item {
+    position: absolute;
+}
+
+.button__up {
+    top: 30px;
+    left: 35%;
+}
+
+.button__down {
+    top: 140px;
+    left: 35%;
+}
+
+.button__left {
+    top: 140px;
+    left: 0;
+}
+
+.button__right {
+    top: 140px;
+    left: 70%;
+}
+
+
 @media (max-width: 768px) {
     #snakeGame {
         max-width: 600px;
@@ -250,5 +289,9 @@ body {
     #restartButton {
         padding: 10px 25px;
         font-size: 10px;
+    }
+
+    .buttons {
+        display: block;
     }
 }
