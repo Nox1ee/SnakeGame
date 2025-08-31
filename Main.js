@@ -52,7 +52,7 @@ class Main {
         if (head.x === this.apple.position.x && head.y === this.apple.position.y) { // При поедании яблока
             this.score.increase(); // Увеличение счета
             this.apple.spawn(this.snake.body); // Увеличение длины змейки
-            this.interval = Math.max(50, this.interval - 10); // Уменьшение интервала(увеличение скорости змейки)
+            this.interval = Math.max(100, this.interval - 5); // Уменьшение интервала(увеличение скорости змейки)
             clearInterval(this.gameInterval);
             this.gameInterval = setInterval(() => this.gameLoop(), this.interval); // Обновление игры с новым интервалом
         } else {
@@ -78,3 +78,4 @@ class Main {
 window.onload = () => new Main();
 
 export default Main;
+
