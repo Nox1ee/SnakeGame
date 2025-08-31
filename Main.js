@@ -23,6 +23,8 @@ class Main {
         location.reload();
         });
 
+        this.snake.changeDirectionMobile();
+
         this.verifyHighScore();
     }
  
@@ -39,42 +41,6 @@ class Main {
 
         document.addEventListener('keydown', (event) => {
             this.snake.changeDirection(event.key);
-        });
-
-        // Обработчик событий для касаний
-        document.addEventListener('touchstart', (event) => {
-            startX = event.touches[0].clientX;
-            startY = event.touches[0].clientY;
-        });
-
-        document.addEventListener('touchmove', (event) => {
-            const touchX = event.touches[0].clientX;
-            const touchY = event.touches[0].clientY;
-
-            const deltaX = startX - touchX;
-            const deltaY = startY - touchY;
-
-            if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                // Свайп влево или вправо
-                if (deltaX > 30) {
-                    // Свайп влево
-                    direction = { x: -1, y: 0 };
-                } else if (deltaX < -30) {
-                    // Свайп вправо
-                    direction = { x: 1, y: 0 };
-                }
-            } else {
-                // Свайп вверх или вниз
-                if (deltaY > 30) {
-                    // Свайп вверх
-                    direction = { x: 0, y: -1 };
-                } else if (deltaY < -30) {
-                    // Свайп вниз
-                    direction = { x: 0, y: 1 };
-                }
-            }
-
-            event.preventDefault(); // Предотвращаем прокрутку страницы
         });
 
         this.gameInterval = setInterval(() => this.gameLoop(), this.interval);
