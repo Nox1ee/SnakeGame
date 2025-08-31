@@ -30,8 +30,27 @@ class Snake {
         }
     }
 
-    grow() {
-        this.body.push({});
+    changeDirectionMobile() {
+        const up = document.querySelector(".button__up");
+        const down = document.querySelector(".button__down");
+        const left = document.querySelector(".button__left");
+        const right = document.querySelector(".button__right");
+
+        up.addEventListener("click", () => {
+            if (this.direction.y !== 1) this.direction = { x: 0, y: -1 };
+        });
+
+        down.addEventListener("click", () => {
+            if (this.direction.y !== -1) this.direction = { x: 0, y: 1 };
+        });
+
+        left.addEventListener("click", () => {
+            if (this.direction.x !== 1) this.direction = { x: -1, y: 0 };
+        })
+
+        right.addEventListener("click", () => {
+            if (this.direction.x !== -1) this.direction = { x: 1, y: 0 };
+        })
     }
 
     isSelfCollision() {
